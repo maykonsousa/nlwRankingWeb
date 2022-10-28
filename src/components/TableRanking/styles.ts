@@ -9,6 +9,7 @@ export const TableContainer = styled.div`
   table {
     width: 100%;
     border-spacing: 0 0.5rem;
+    min-width: 35rem;
 
     th {
       color: var(--colors-text-title);
