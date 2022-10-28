@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -22,6 +24,8 @@ interface IUserContextData {
   createNewUser: (username: string) => Promise<void>;
   getUsersList: () => Promise<void>;
   loading: boolean;
+  userError: string;
+  listError: string;
 }
 
 export const UserContext = createContext<IUserContextData>(
@@ -29,7 +33,6 @@ export const UserContext = createContext<IUserContextData>(
 );
 
 export function UserProvider({ children }: IProviderProps) {
-  const [newUser, setNewUser] = useState<IUser>({} as IUser);
   const [users, setUsers] = useState<IUser[]>([] as IUser[]);
   const [userError, setUserError] = useState('');
   const [listError, setListError] = useState('');
@@ -38,9 +41,13 @@ export function UserProvider({ children }: IProviderProps) {
   const getUsersList = async (): Promise<void> => {
     setLoading(true);
     try {
-      const usersList = (await getAllUsersService()) as unknown as IUser[];
-
-      setUsers(usersList);
+      const { data, error } = await getAllUsersService();
+      setUsers(data as IUser[]);
+      if (error) {
+        setListError(error);
+        setLoading(false);
+        return;
+      }
       setLoading(false);
     } catch {
       setListError('Erro ao atualizar a lista de usuários');
@@ -56,9 +63,14 @@ export function UserProvider({ children }: IProviderProps) {
       return;
     }
     setLoading(true);
-    const userCreated = await InsertUserService(username);
-    setNewUser(userCreated);
+    const { error } = await InsertUserService(username);
+    if (error) {
+      setUserError(error);
+      setLoading(false);
+      return;
+    }
     await getUsersList();
+
     setLoading(false);
   };
 
