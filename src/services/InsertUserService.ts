@@ -1,23 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { request, requestSkylab } from './axios';
+import { request } from './axios';
 
-interface IReturn {
+interface IData {
   id: string;
   username: string;
   createdAt: string;
   updatedAt: string;
-  count: number;
+  count?: number;
+}
+
+interface IReturn {
+  data: IData | null;
+  error: string | null;
 }
 
 export const InsertUserService = async (username: string): Promise<IReturn> => {
-  const { data } = await request.post('/users', {
-    username,
-  });
-  const url = `https://skylab-api.rocketseat.com.br/public/event/nlw-copa/referral/${username}`;
-  const count = await requestSkylab
-    .get(url)
-    .then((response) => response.data.totalCount);
-  return { ...data, count: count || 0 };
+  try {
+    const { data } = await request.post('/users', {
+      username,
+    });
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: 'Usuário inválido' };
+  }
 };

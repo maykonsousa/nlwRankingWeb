@@ -7,7 +7,9 @@ export function Header() {
     <HeaderContainer>
       <Brand>
         <img src={IgniteImg} alt="Logo Ignite" />
-        <h1>Ranking NLW COPA</h1>
+        <h1>
+          Ranking <span>NLW COPA</span>
+        </h1>
       </Brand>
       <FormAdd />
     </HeaderContainer>

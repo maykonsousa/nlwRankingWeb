@@ -27,8 +27,13 @@ export const ActionContainer = styled.div`
 
   h1 {
     font-size: 3rem;
+    text-align: center;
     span {
       color: var(--colors-nlw-cup-primary);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
     }
   }
 
