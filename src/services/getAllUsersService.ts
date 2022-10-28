@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { request } from './axios';
 
-interface IReturn {
+interface Data {
   id: string;
   username: string;
   createdAt: string;
@@ -10,8 +10,17 @@ interface IReturn {
   count: number;
 }
 
-export const getAllUsersService = async (): Promise<IReturn[]> => {
-  const { data } = await request.get('/ranking');
+interface IReturn {
+  data: Data[] | null;
+  error: string | null;
+}
 
-  return data;
+export const getAllUsersService = async (): Promise<IReturn> => {
+  try {
+    const { data } = await request.get('/ranking');
+
+    return { data, error: null };
+  } catch (error) {
+    return { data: [], error: 'Falha ao cerregar lista de usuários' };
+  }
 };
