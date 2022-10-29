@@ -55,6 +55,7 @@ export function UserProvider({ children }: IProviderProps) {
   };
 
   const createNewUser = async (username: string) => {
+    setUserError('');
     const userNameAlreadyExists = users.find(
       (user) => user.username === username
     );
