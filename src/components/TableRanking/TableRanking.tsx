@@ -2,6 +2,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/Context';
 import { EmptyList } from '../EmptyList';
+import { TicketModal } from '../TicketModal';
 import { TableContainer } from './styles';
 
 export function TableRanking() {
@@ -21,11 +22,13 @@ export function TableRanking() {
           <tbody>
             {users?.map((user, index) => (
               <tr key={user.id}>
-                <td>{index + 1}</td>
+                <td>{`${index + 1}º`}</td>
                 <td>{user.username}</td>
                 <td>{user.count}</td>
                 <td>
-                  <a href="#">Ver Ticket</a>
+                  <a href="#">
+                    <TicketModal username={user.username} />
+                  </a>
                 </td>
               </tr>
             ))}
