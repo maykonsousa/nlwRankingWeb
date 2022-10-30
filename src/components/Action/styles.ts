@@ -56,6 +56,10 @@ export const ActionContainer = styled.div`
     border-radius: 0.25rem;
     transition: 0.2s;
 
+    @media (max-width: 768px) {
+      padding: 1rem 2rem;
+    }
+
     &:hover {
       color: var(--colors-nlw-cup-secondary-light);
       background: var(--colors-explorer-lab-primary-dark);
