@@ -41,6 +41,7 @@ export const ActionContainer = styled.div`
     font-size: 1.5rem;
     color: var(--colors-text-base);
     font-weight: 600;
+    text-align: center;
   }
 
   a {

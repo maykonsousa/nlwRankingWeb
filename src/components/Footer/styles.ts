@@ -9,6 +9,10 @@ export const FooterContainer = styled.footer`
   margin: 0 auto;
   padding: 0 2rem;
   font-size: 1.25rem;
+  gap: 5rem;
+`;
+
+export const FooterText = styled.div`
   a {
     color: var(--colors-nlw-cup-primary);
     text-decoration: none;
@@ -17,10 +21,15 @@ export const FooterContainer = styled.footer`
       color: var(--colors-nlw-cup-secondary);
     }
   }
+
+  @media (max-width: 768px) {
+    :first-child {
+      display: none;
+    }
+  }
 `;
 
 export const NavIcons = styled.nav`
-  margin-left: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;

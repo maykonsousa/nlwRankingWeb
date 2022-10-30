@@ -1,15 +1,15 @@
 import { GithubLogo, Globe, InstagramLogo, LinkedinLogo } from 'phosphor-react';
-import { FooterContainer, NavIcons } from './styles';
+import { FooterContainer, FooterText, NavIcons } from './styles';
 
 export function Footer() {
   return (
     <FooterContainer>
-      <div>
+      <FooterText>
         <p>
           Desenvolvido por{' '}
           <a href="http://maykonsousa.github.io">Maykon Sousa</a>
         </p>
-      </div>
+      </FooterText>
       <NavIcons>
         <a href="http://github.com/maykonsousa">
           <GithubLogo size={32} />
