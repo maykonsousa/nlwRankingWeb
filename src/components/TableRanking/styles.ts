@@ -5,6 +5,25 @@ export const TableContainer = styled.div`
   overflow: auto;
   max-height: 30rem;
   min-height: 20rem;
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--colors-color-background);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--colors-nlw-cup-primary);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--colors-nlw-cup-secondary-light);
+  }
 
   table {
     width: 100%;
