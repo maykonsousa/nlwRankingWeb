@@ -7,6 +7,7 @@ export const FooterContainer = styled.footer`
   height: 6rem;
   max-width: 1120px;
   margin: 0 auto;
+  padding: 0 2rem;
   font-size: 1.25rem;
   a {
     color: var(--colors-nlw-cup-primary);
@@ -32,6 +33,7 @@ export const NavIcons = styled.nav`
     justify-content: center;
     background: var(--colors-shape-primary);
     color: var(--colors-text-base);
+    font-weight: bold;
     transition: 0.2s;
 
     &:hover {
