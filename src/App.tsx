@@ -11,6 +11,14 @@ function App() {
     <AppContainer>
       <Header />
       {loading ? <Loading /> : <TableRanking />}
+      <p>
+        <span>Obs:</span> A NLW Ranking não é aplicação oficial da Rocketseat e
+        reúne dados apenas dos usuários cadastrados aqui. <br /> Para
+        informações oficiais acompanhe os canais oficiais da Rocketseat na{' '}
+        <a href="http://app.rocketseat.com.br">Plataforma Oficial</a>, no{' '}
+        <a href="https://www.instagram.com/rocketseat_oficial/">Instagram</a> ou
+        no <a href="https://discord.gg/rocketseat">Discord</a>.
+      </p>
     </AppContainer>
   );
 }
